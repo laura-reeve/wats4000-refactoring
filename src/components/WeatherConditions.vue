@@ -1,3 +1,5 @@
+<!-- WeatherConditions child component - temps and humidity def list -->
+
 <template>
 <div>
 <dl>

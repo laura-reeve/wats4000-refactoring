@@ -1,3 +1,5 @@
+<!-- 5 Day Forecast page -->
+
 <template>
   <div>
     <h2>Five Day Hourly Forecast <span v-if="weatherData"> for {{ weatherData.city.name }}, {{weatherData.city.country }}</span></h2>
@@ -9,13 +11,16 @@
     <ul v-if="weatherData && errors.length===0" class="forecast">
       <li v-for="forecast in weatherData.list">
         <h3>{{ forecast.dt|formatDate }}</h3>
+          <!-- WeatherSummary child component - icons and labels -->
           <weather-summary v-bind:weatherData="forecast.weather"></weather-summary>
+          <!-- WeatherConditions child component - temps and humidity def list -->
           <weather-conditions v-bind:weatherData="forecast.main"></weather-conditions>
       </li>
     </ul>
     <div v-else>
       <h2>Loading...</h2>
     </div>
+    <!-- Error list child component -->
     <error-list v-bind:errorList="errors"></error-list>
   </div>
 </template>
@@ -36,6 +41,7 @@ export default {
     }
   },
   created () {
+    // API.js BaseURL abstraction
     API.get('forecast', {
         params: {
           id: this.$route.params.cityId
@@ -81,27 +87,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+/* global styles in App.vue */
 li {
-  display: inline-block;
   width: 200px;
-  min-height: 300px;
-  border: solid 1px #e8e8e8;
-  padding: 10px;
   margin: 5px;
 }
-
-a {
-  color: #42b983;
-}
-
 </style>
 
 

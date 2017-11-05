@@ -1,3 +1,5 @@
+<!-- Error list loop and styles -->
+
 <template>
 <div>
   <div v-if="errorList.length > 0">

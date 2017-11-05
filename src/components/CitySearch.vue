@@ -1,3 +1,5 @@
+<!-- Home page -->
+
 <template>
   <div>
     <h2>City Search</h2>
@@ -8,10 +10,13 @@
         <li v-for="city in results.list">
             <h2>{{ city.name }}, {{ city.sys.country }}</h2>
             <p><router-link v-bind:to="{ name: 'CurrentWeather', params: { cityId: city.id } }">View Current Weather</router-link></p>
+            <!-- WeatherSummary child component - icons and labels -->
             <weather-summary v-bind:weatherData="city.weather"></weather-summary>
+            <!-- WeatherConditions child component - temps and humidity def list -->
             <weather-conditions v-bind:weatherData="city.main"></weather-conditions>
         </li>
     </ul>
+    <!-- Error list child component -->
     <error-list v-bind:errorList="errors"></error-list>
   </div>
 </template>
@@ -33,6 +38,7 @@ export default {
   },
   methods: {
     getCities: function () {
+      // API.js BaseURL abstraction
       API.get('find', {
         params: {
           q: this.query
@@ -56,25 +62,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+/* global styles in App.vue */
 li {
-  display: inline-block;
-  width: 300px;
-  min-height: 300px;
-  border: solid 1px #e8e8e8;
-  padding: 10px;
   margin: 5px;
 }
-a {
-  color: #42b983;
-}
 </style>
-
-

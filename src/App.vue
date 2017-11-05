@@ -31,4 +31,22 @@ body {
   padding: 0;
   background: #fff;
 }
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  width: 300px;
+  min-height: 300px;
+  border: solid 1px #e8e8e8;
+  padding: 10px;
+  margin: 5px;
+}
+a {
+  color: #42b983;
+}
 </style>

@@ -1,3 +1,5 @@
+<!-- WeatherSummary child component - icons and labels -->
+
 <template>
   <div>
     <div v-for="weatherSummary in weatherData" class="weatherSummary">

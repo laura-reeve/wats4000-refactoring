@@ -1,4 +1,4 @@
-// Base API configuration
+// Base API configuration and key
 
 import axios from 'axios';
 
